@@ -141,11 +141,13 @@ public class GameManager : MonoBehaviour
         {
             firstCard = card;
             firstCard.Flip();
+            AudioManager.Instance?.PlayFlipSound();
         }
         else if (secondCard == null && card != firstCard)
         {
             secondCard = card;
             secondCard.Flip();
+            AudioManager.Instance?.PlayFlipSound();
             StartCoroutine(CheckMatch());
         }
     }
@@ -167,7 +169,7 @@ public class GameManager : MonoBehaviour
             score += config.matchScore + (combo * config.comboMultiplier);
             matchesFound++;
 
-            //TODO: Play Audio
+            AudioManager.Instance?.PlayMatchSound();
 
             if (matchesFound >= config.TotalPairs)
             {
@@ -181,7 +183,7 @@ public class GameManager : MonoBehaviour
             combo = 0;
             score = Mathf.Max(0, score - config.mismatchPenalty);
 
-            //TODO: Play Audio
+            AudioManager.Instance?.PlayMismatchSound();
 
             yield return new WaitForSeconds(config.mismatchDelay);
 
@@ -199,7 +201,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGameComplete()
     {
-        //TODO: Play Audio
+        AudioManager.Instance?.PlayGameOverSound();
         // Show completion message or restart
     }
 
