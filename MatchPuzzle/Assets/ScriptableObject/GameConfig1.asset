@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017cabfaf195246e2a5750c8f06c5a76, type: 3}
+  m_Name: GameConfig1
+  m_EditorClassIdentifier: 
+  rows: 2
+  columns: 2
+  matchScore: 100
+  mismatchPenalty: 10
+  comboMultiplier: 50
+  mismatchDelay: 1
+  cardSprites:
+  - {fileID: 21300000, guid: 1809bf41ce6194202b7c9fe068d9db73, type: 3}
+  - {fileID: 21300000, guid: 9380e469635aa4f54a15feb0a87292ae, type: 3}
+  - {fileID: 21300000, guid: ebfc3faf5219744bf9b0c1496dd6e623, type: 3}
+  - {fileID: 21300000, guid: c3c62bb45fd10478483792fa894cc8ba, type: 3}
+  - {fileID: 21300000, guid: 0bfa74774dd1c4ca49afefa9467f1d89, type: 3}
+  - {fileID: 21300000, guid: 9891c0347a1b74d5897c6ec67810bf18, type: 3}
+  - {fileID: 21300000, guid: 235fbae4b74df4d4f85ebd447e6888b0, type: 3}
+  - {fileID: 21300000, guid: c3e0f335647a04277b1bc8d63d68938f, type: 3}
+  - {fileID: 21300000, guid: 5dadb2f3ffe304f98a5201f6461141f9, type: 3}
+  - {fileID: 21300000, guid: f5f296c7538884592aa278a2c4d6ae2a, type: 3}
+  - {fileID: 21300000, guid: ef75768397a894b2c8fc548d8aa18938, type: 3}
+  - {fileID: 21300000, guid: 0a4233f8089e344f1b67daf122da0350, type: 3}
+  - {fileID: 21300000, guid: f6e7522bcf7304c89b3b3df671bbd67a, type: 3}
+  - {fileID: 21300000, guid: 1c4731181cb91425599f19dd3e9a35dd, type: 3}
+  - {fileID: 21300000, guid: 5564ec348ab8c4ffda408e26d4e1ad56, type: 3}
+  - {fileID: 21300000, guid: 9a18d178e4ce044aaa5ce56cbf349570, type: 3}
+  - {fileID: 21300000, guid: 3cdc54fd4276842c08eb4f218a45d4d5, type: 3}
+  - {fileID: 21300000, guid: 6e8a5995baddc41f884420c697294527, type: 3}
+  - {fileID: 21300000, guid: 4a264eccaf31f490bae534ad17cc1db6, type: 3}
+  - {fileID: 21300000, guid: fe234ab8b127c478dae102673e1bcc21, type: 3}
+  - {fileID: 21300000, guid: bfafa8772ae31423daa9b2e6f9d34718, type: 3}
