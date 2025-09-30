@@ -917,6 +917,7 @@ MonoBehaviour:
   gameConfig:
   - {fileID: 11400000, guid: 79ff66bfb0936419f97d4e9bc9180fff, type: 2}
   - {fileID: 11400000, guid: 2edd4a5e7c91b42c482f1e4f692bbbe3, type: 2}
+  - {fileID: 11400000, guid: 2874910dcd48d4d6ab5e5212be61a98e, type: 2}
   - {fileID: 11400000, guid: 03d97c34a048f4630b994e07c5c03a9a, type: 2}
   cardContainer: {fileID: 1994771503}
   cardPrefab: {fileID: 1198918566072356591, guid: 31d8fe76cd52c493aaa4208086f44327, type: 3}

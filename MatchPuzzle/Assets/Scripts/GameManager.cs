@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     private int combo = 0;
     private int matchesFound = 0;
 
-    private bool isProcessing = false;
 
     void Awake()
     {
@@ -144,8 +143,6 @@ public class GameManager : MonoBehaviour
 
     public void OnCardClicked(Card card)
     {
-        if (isProcessing) return;
-
         if (firstCard == null)
         {
             firstCard = card;
@@ -166,7 +163,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CheckMatch()
     {
-        isProcessing = true;
+       
 
         // Wait for flip animation
         yield return new WaitForSeconds(0.5f);
@@ -205,7 +202,6 @@ public class GameManager : MonoBehaviour
 
         firstCard = null;
         secondCard = null;
-        isProcessing = false;
 
         UpdateUI();
         SaveGame();

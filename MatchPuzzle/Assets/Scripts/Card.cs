@@ -47,12 +47,10 @@ public class Card : MonoBehaviour
 
     private void OnCardClicked()
     {
-        Debug.Log("WHY CLICK IS NOT HAPPENING");
-        Debug.Log("fliping " + isFlipping + "     " +isFlipped + " " + isMatched);
+       
         if (!isFlipping && !isFlipped && !isFlipped)
         {
             GameManager.Instance.OnCardClicked(this);
-            Debug.Log("fliping");
         }
     }
 

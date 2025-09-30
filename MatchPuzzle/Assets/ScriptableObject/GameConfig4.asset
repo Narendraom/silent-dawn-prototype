@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 017cabfaf195246e2a5750c8f06c5a76, type: 3}
-  m_Name: GameConfig3
+  m_Name: GameConfig4
   m_EditorClassIdentifier: 
-  rows: 2
-  columns: 3
+  rows: 5
+  columns: 6
   matchScore: 100
   mismatchPenalty: 10
   comboMultiplier: 50
