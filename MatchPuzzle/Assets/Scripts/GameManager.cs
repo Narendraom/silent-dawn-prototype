@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //SaveManager.Instance.ClearSave();
+        SaveManager.Instance.ClearSave();
         InitializeGame();
     }
 

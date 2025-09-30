@@ -79,8 +79,10 @@ public class SaveManager : MonoBehaviour
 
     public void ClearSave()
     {
+        Debug.Log("deled");
         if (File.Exists(saveFilePath))
         {
+            Debug.Log("deletd");
             File.Delete(saveFilePath);
         }
     }
