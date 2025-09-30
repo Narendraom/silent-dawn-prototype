@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private int combo = 0;
     private int matchesFound = 0;
 
+    GameSaveData saveData;
 
     void Awake()
     {
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //SaveManager.Instance.ClearSave();
         InitializeGame();
     }
 
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         if (SaveManager.Instance.HasSavedGame())
         {
-            LoadGame();
+            LoadLevel();
         }
         else
         {
@@ -72,7 +74,10 @@ public class GameManager : MonoBehaviour
         ClearBoard();
         GenerateCards();
         SetupGridLayout();
-
+        if (SaveManager.Instance.HasSavedGame())
+        {
+            LoadGame();
+        }
         UpdateUI();
     }
 
@@ -242,9 +247,10 @@ public class GameManager : MonoBehaviour
         SaveManager.Instance.SaveGame(saveData);
     }
 
-    public void LoadGame()
+
+    private void LoadLevel()
     {
-        GameSaveData saveData = SaveManager.Instance.LoadGame();
+        saveData = SaveManager.Instance.LoadGame();
 
         if (saveData != null)
         {
@@ -252,13 +258,24 @@ public class GameManager : MonoBehaviour
             combo = saveData.combo;
             matchesFound = saveData.matchesFound;
             level = saveData.level;
+          
+        }
+    }
+
+    public void LoadGame()
+    {
+        if (saveData != null)
+        {
             for (int i = 0; i < cards.Count && i < saveData.cardStates.Count; i++)
             {
+                int spriteIndex = saveData.cardStates[i].cardId % config.cardSprites.Length;
+                cards[i].Initialize(saveData.cardStates[i].cardId, config.cardSprites[spriteIndex]);
                 if (saveData.cardStates[i].isMatched)
                 {
                     cards[i].Flip(true);
                     cards[i].SetMatched();
                 }
+
             }
         }
     }
