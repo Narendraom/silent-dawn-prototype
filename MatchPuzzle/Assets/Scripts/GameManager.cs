@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private Card firstCard;
     private Card secondCard;
     private GameConfig config;
+    private int level;
 
 
     private int score = 0;
@@ -53,17 +54,25 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame()
     {
-        int level = Random.Range(0, gameConfig.Length);
+        level = Random.Range(0, gameConfig.Length);
+       
+
+        if (SaveManager.Instance.HasSavedGame())
+        {
+            LoadGame();
+        }
+        else
+        {
+            score = 0;
+            combo = 0;
+            matchesFound = 0;
+        }
+
         config = gameConfig[level];
         config.Validate();
         ClearBoard();
         GenerateCards();
         SetupGridLayout();
-
-        // TODO: loading saved game
-        score = 0;
-        combo = 0;
-        matchesFound = 0;
 
         UpdateUI();
     }
@@ -202,7 +211,7 @@ public class GameManager : MonoBehaviour
     private void OnGameComplete()
     {
         AudioManager.Instance?.PlayGameOverSound();
-        // Show completion message or restart
+        SaveManager.Instance.ClearSave();
     }
 
     private void UpdateUI()
@@ -216,16 +225,47 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        //TODO: Save Audio
+        GameSaveData saveData = new GameSaveData
+        {
+            score = score,
+            combo = combo,
+            matchesFound = matchesFound,
+            level = level,
+            cardStates = cards.Select(c => new CardState
+            {
+                cardId = c.CardId,
+                isMatched = c.IsMatched,
+                isFlipped = c.IsFlipped
+            }).ToList()
+        };
+
+        SaveManager.Instance.SaveGame(saveData);
     }
 
     public void LoadGame()
     {
-        //TODO: load Audio
+        GameSaveData saveData = SaveManager.Instance.LoadGame();
+
+        if (saveData != null)
+        {
+            score = saveData.score;
+            combo = saveData.combo;
+            matchesFound = saveData.matchesFound;
+            level = saveData.level;
+            for (int i = 0; i < cards.Count && i < saveData.cardStates.Count; i++)
+            {
+                if (saveData.cardStates[i].isMatched)
+                {
+                    cards[i].Flip(true);
+                    cards[i].SetMatched();
+                }
+            }
+        }
     }
 
     public void RestartGame()
     {
+        SaveManager.Instance.ClearSave();
         InitializeGame();
     }
 }
