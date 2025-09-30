@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 1994771503}
   - component: {fileID: 1994771504}
   - component: {fileID: 1994771505}
+  - component: {fileID: 1994771506}
   m_Layer: 5
   m_Name: GameBoard
   m_TagString: Untagged
@@ -523,3 +524,23 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1994771506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994771502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3607299b693e44009bcead9b509ef1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 1198918566072356591, guid: 31d8fe76cd52c493aaa4208086f44327, type: 3}
+  cardSprites:
+  - {fileID: 21300000, guid: 1809bf41ce6194202b7c9fe068d9db73, type: 3}
+  - {fileID: 21300000, guid: 9380e469635aa4f54a15feb0a87292ae, type: 3}
+  - {fileID: 21300000, guid: ebfc3faf5219744bf9b0c1496dd6e623, type: 3}
+  - {fileID: 21300000, guid: f6e7522bcf7304c89b3b3df671bbd67a, type: 3}
+  - {fileID: 21300000, guid: 6e8a5995baddc41f884420c697294527, type: 3}
+  - {fileID: 21300000, guid: fe234ab8b127c478dae102673e1bcc21, type: 3}
