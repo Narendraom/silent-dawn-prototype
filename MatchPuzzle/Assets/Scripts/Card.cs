@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Card : MonoBehaviour
 {
@@ -46,9 +47,12 @@ public class Card : MonoBehaviour
 
     private void OnCardClicked()
     {
-        if (!isFlipping && !isFlipped && !isMatched)
+        Debug.Log("WHY CLICK IS NOT HAPPENING");
+        Debug.Log("fliping " + isFlipping + "     " +isFlipped + " " + isMatched);
+        if (!isFlipping && !isFlipped && !isFlipped)
         {
             GameManager.Instance.OnCardClicked(this);
+            Debug.Log("fliping");
         }
     }
 
@@ -59,6 +63,7 @@ public class Card : MonoBehaviour
             isFlipped = !isFlipped;
             cardFront.SetActive(isFlipped);
             cardBack.SetActive(!isFlipped);
+            transform.localRotation = Quaternion.identity;
         }
         else
         {
@@ -104,7 +109,7 @@ public class Card : MonoBehaviour
         transform.localRotation = endRot;
         isFlipping = false;
 
-        //AudioManager.Instance?.PlayFlipSound();
+        AudioManager.Instance?.PlayFlipSound();
     }
 
     public void SetMatched()
@@ -146,7 +151,7 @@ public class Card : MonoBehaviour
     {
         if (isFlipped && !isMatched)
         {
-            Flip();
+            Flip(immediate:true);
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,7 +56,6 @@ public class GameManager : MonoBehaviour
     public void InitializeGame()
     {
         level = Random.Range(0, gameConfig.Length);
-       
 
         if (SaveManager.Instance.HasSavedGame())
         {
@@ -150,14 +150,17 @@ public class GameManager : MonoBehaviour
         {
             firstCard = card;
             firstCard.Flip();
-            AudioManager.Instance?.PlayFlipSound();
         }
         else if (secondCard == null && card != firstCard)
         {
             secondCard = card;
             secondCard.Flip();
-            AudioManager.Instance?.PlayFlipSound();
             StartCoroutine(CheckMatch());
+        }
+        else if (secondCard != null && card != firstCard && card != secondCard)// adding this to continues fliping
+        {
+            secondCard.FlipBack();
+            secondCard = card;
         }
     }
 
@@ -212,6 +215,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance?.PlayGameOverSound();
         SaveManager.Instance.ClearSave();
+        SceneManager.LoadScene(0);// Can implement some ui tom restart and replay
     }
 
     private void UpdateUI()
